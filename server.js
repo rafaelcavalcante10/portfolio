@@ -5,10 +5,10 @@ const app = express();
 var port = process.env.PORT || 3000;
 
 // Serve os arquivos estáticos da pasta dist (gerada pelo ng build)
-app.use(express.static(__dirname + "/dist/marvelAngular"));
+app.use(express.static(__dirname + "/dist/portfolio"));
 
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname + "/dist/marvelAngular/index.html"));
+  res.sendFile(path.join(__dirname + "/dist/portfolio/index.html"));
 });
 
 // Inicia a aplicação pela porta configurada

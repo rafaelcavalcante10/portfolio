@@ -32,31 +32,58 @@
     </div>
 
     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+      <form class="php-email-form" [formGroup]="form">
         <div class="row">
           <div class="form-group col-md-6">
-            <label for="name">Nome</label>
-            <input type="text" name="name" class="form-control" id="name" required>
+            <label>Nome</label>
+            <input type="text" class="form-control"
+              [ngClass]="{'is-invalid':f.nome.errors && f.nome.touched}"
+              formControlName="nome" placeholder="Insira seu nome"
+            >
+            <div *ngIf="f.nome.errors?.required" class="invalid-feedback">
+              Nome é obrigatório
+            </div>
           </div>
           <div class="form-group col-md-6">
-            <label for="name">E-mail</label>
-            <input type="email" class="form-control" name="email" id="email" required>
+            <label>E-mail</label>
+            <input type="email" class="form-control"
+              [ngClass]="{'is-invalid':f.email.errors && f.email.touched}"
+              formControlName="email" placeholder="Insira seu e-mail"
+            >
+            <div *ngIf="f.email.errors?.required" class="invalid-feedback">
+              E-mail é obrigatório
+            </div>
+            <div *ngIf="f.email.errors?.email" class="invalid-feedback">
+              E-mail inválido
+            </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="name">Assunto</label>
-          <input type="text" class="form-control" name="subject" id="subject" required>
+          <label>Assunto</label>
+          <input type="text" class="form-control"
+            [ngClass]="{'is-invalid':f.assunto.errors && f.assunto.touched}"
+            formControlName="assunto" placeholder="Insira um assunto"
+          >
+          <div *ngIf="f.assunto.errors?.required" class="invalid-feedback">
+            Assunto é obrigatório
+          </div>
         </div>
         <div class="form-group">
-          <label for="name">Mensagem</label>
-          <textarea class="form-control" name="message" rows="10" required></textarea>
+          <label>Mensagem</label>
+          <textarea class="form-control" rows="10"
+            [ngClass]="{'is-invalid':f.mensagem.errors && f.mensagem.touched}"
+            formControlName="mensagem" placeholder="Insira uma mensagem"
+          ></textarea>
+          <div *ngIf="f.mensagem.errors?.required" class="invalid-feedback">
+            Mensagem é obrigatória
+          </div>
         </div>
         <div class="my-3">
           <div class="loading">Loading</div>
           <div class="error-message"></div>
           <div class="sent-message">Your message has been sent. Thank you!</div>
         </div>
-        <div class="text-center"><button type="submit">Enviar</button></div>
+        <div class="text-center"><button class="btn btn-success" [disabled]="!form.valid">Enviar</button></div>
       </form>
     </div>
 

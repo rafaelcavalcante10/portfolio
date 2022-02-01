@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ResumeComponent } from './components/resume/resume.component';
-import { PortfolioComponent } from './components/portfolio/portfolio.component';
-import { ServicesComponent } from './components/services/services.component';
+import { NavmenuComponent } from './shared/navmenu/navmenu.component';
+import { NavfooterComponent } from './shared/navfooter/navfooter.component';
+import { SkillsComponent } from './components/skills/skills.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,10 @@ import { ServicesComponent } from './components/services/services.component';
     HomeComponent,
     AboutComponent,
     ResumeComponent,
-    PortfolioComponent,
-    ServicesComponent
+    NavmenuComponent,
+    NavfooterComponent,
+    SkillsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

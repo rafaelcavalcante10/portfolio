@@ -12,7 +12,6 @@ import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AboutSkillsComponent } from './components/about/about-skills/about-skills.component';
 import { DatePipeFormatPipe } from './shared/date-pipe-format.pipe';
 
@@ -32,7 +31,6 @@ import { DatePipeFormatPipe } from './shared/date-pipe-format.pipe';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CollapseModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

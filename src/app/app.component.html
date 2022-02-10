@@ -1,42 +1,15 @@
 <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
-<!-- ======= Header ======= -->
-<header id="header">
-  <app-navmenu></app-navmenu>
-</header><!-- End Header -->
-
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-  <app-home></app-home>
-</section><!-- End Hero -->
-
+<app-navmenu></app-navmenu>
 <main id="main">
-
-  <!-- ======= About Section ======= -->
-  <section id="about" class="about">
-    <app-about></app-about>
-  </section><!-- End About Section -->
-
-  <!-- ======= Skills Section ======= -->
-  <section id="skills" class="skills section-bg">
-    <app-skills></app-skills>
-  </section><!-- End Skills Section -->
-
-  <!-- ======= Resume Section ======= -->
-  <section id="resume" class="resume">
-    <app-resume></app-resume>
-  </section><!-- End Resume Section -->
-
-  <!-- ======= Contact Section ======= -->
-  <section id="contact" class="contact">
-    <app-contact></app-contact>
-  </section><!-- End Contact Section -->
-
-</main><!-- End #main -->
-
-<!-- ======= Footer ======= -->
-<footer id="footer">
-  <app-navfooter></app-navfooter>
-</footer><!-- End  Footer -->
-
+  <router-outlet></router-outlet>
+</main>
+<app-navfooter></app-navfooter>
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-spin-clockwise"
+>
+  <p style="font-size: 20px; color: white;">Carregando...</p>
+</ngx-spinner>

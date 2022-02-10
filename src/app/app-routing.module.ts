@@ -8,7 +8,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: "Home", component: HomeComponent},
-  { path: "Sobre", redirectTo: "About/skills"},
   { path: "About", component: AboutComponent,
     children:[
       {path:"skills", component:AboutSkillsComponent}

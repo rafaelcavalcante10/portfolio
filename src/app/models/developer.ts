@@ -1,3 +1,4 @@
+import { Graduations } from './graduations';
 export interface Developer {
   id : number;
   nome : string;
@@ -14,4 +15,5 @@ export interface Developer {
   informacao :  string;
   cargo : string;
   cargocompleto : string;
+  graduations : Graduations[];
 }

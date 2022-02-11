@@ -1,3 +1,4 @@
+import { OrderModule } from 'ngx-order-pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,7 +35,8 @@ import { DatePipeFormatPipe } from './shared/date-pipe-format.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

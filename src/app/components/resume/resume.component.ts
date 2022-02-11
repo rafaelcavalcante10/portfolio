@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Developer } from 'src/app/models/developer';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+import { OrderModule } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-resume',

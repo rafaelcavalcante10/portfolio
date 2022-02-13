@@ -25,10 +25,10 @@ export class ResumeComponent implements OnInit {
     this.PreencheTela();
   }
   private PreencheTela() : void {
-    this.http.get(this.service.ApiServiceURL).subscribe({
+    this.http.get(this.service.ApiServiceURL+'Resume').subscribe({
       next: (response : any) => {
         this._developers = response;
-        this.developer = this._developers[0];
+        this.developer = this._developers;
       },
       error: (error : any) => this.spinner.hide(),
       complete: () => this.spinner.hide()

@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 
 export class PortfolioService {
-  public ApiServiceURL = 'https://rafaelcavalcante-portfolioapi.herokuapp.com/api/developer';
+  public ApiServiceURL = 'https://rafaelcavalcante-portfolioapi.herokuapp.com/api/';
 
 }

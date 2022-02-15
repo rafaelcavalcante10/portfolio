@@ -1,8 +1,8 @@
+import { Contact } from './../../models/contact';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Developer } from 'src/app/models/developer';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
@@ -11,8 +11,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: []
 })
 export class ContactComponent implements OnInit {
-  private _developers : Developer[] = [];
-  public developer : Developer | any;
+  public dados : Contact | any;
   public form: FormGroup | any;
   public get f() : any{
     return this.form.controls;
@@ -40,10 +39,9 @@ export class ContactComponent implements OnInit {
     })
   }
   private PreencheTela() : void {
-    this.http.get(this.service.ApiServiceURL+'Contact').subscribe({
+    this.service.getDados('Contact').subscribe({
       next: (response : any) => {
-        this._developers = response;
-        this.developer = this._developers;
+        this.dados = response;
       },
       error: (error : any) => this.spinner.hide(),
       complete: () => this.spinner.hide()

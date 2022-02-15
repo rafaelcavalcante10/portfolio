@@ -1,7 +1,7 @@
+import { Home } from './../../models/home';
 import { HttpClient } from '@angular/common/http';
 import { PortfolioService } from './../../services/portfolio.service';
 import { Component, OnInit } from '@angular/core';
-import { Developer } from 'src/app/models/developer';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -10,8 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: []
 })
 export class HomeComponent implements OnInit {
-  private _developers : Developer[] = [];
-  public developer : Developer | any;
+  public dados : Home | any;
 
   constructor(private service:PortfolioService,
               private spinner : NgxSpinnerService,
@@ -24,13 +23,12 @@ export class HomeComponent implements OnInit {
     this.PreencheTela();
   }
   private PreencheTela() : void {
-    this.http.get(this.service.ApiServiceURL+ 'Home').subscribe({
-      next: (response : any) => {
-        this._developers = response;
-        this.developer = this._developers;
-      },
-      error: (error : any) => this.spinner.hide(),
-      complete: () => this.spinner.hide()
-    });
+    this.service.getDados("Home").subscribe({
+       next: (response : any) => {
+         this.dados = response;
+       },
+       error: (error : any) => this.spinner.hide(),
+       complete: () => this.spinner.hide()
+     });
   }
 }

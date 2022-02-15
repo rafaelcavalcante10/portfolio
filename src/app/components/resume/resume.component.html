@@ -5,22 +5,21 @@
       <h2>Resumo</h2>
       <p></p>
     </div>
-
     <div class="row">
       <div class="col-lg-6" data-aos="fade-up">
         <h3 class="resume-title">Informação</h3>
         <div class="resume-item pb-0">
-          <h4>{{developer.nome}}</h4>
-          <p><em>{{developer.informacao}}</em></p>
+          <h4>{{dados.nome}}</h4>
+          <p><em>{{dados.informacao}}</em></p>
           <ul>
-            <li>{{developer.endereco}}, {{developer.bairro}}, {{developer.cidade}}</li>
-            <li>{{developer.telefone}}</li>
-            <li>{{developer.email}}</li>
+            <li>{{dados.endereco}}, {{dados.bairro}}, {{dados.cidade}}</li>
+            <li>{{dados.telefone}}</li>
+            <li>{{dados.email}}</li>
           </ul>
         </div>
 
         <h3 class="resume-title">Formação</h3>
-        <div class="resume-item" *ngFor="let graduation of developer.graduations | orderBy : 'order' : true">
+        <div class="resume-item" *ngFor="let graduation of dados.graduations">
           <h4>{{graduation.curso}}</h4>
           <h5>{{graduation.inicio}} - {{graduation.fim}}</h5>
           <p><em>{{graduation.universidade}}</em></p>
@@ -29,30 +28,22 @@
       </div>
       <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
         <h3 class="resume-title">Experiência Profissional</h3>
-        <div class="resume-item">
-          <h4>FullStack Developer .NetCore & Angular</h4>
-          <h5>09/2021 - 01/2022</h5>
-          <p><em>Pitang Consultoria e Sistemas, Recife-PE </em></p>
-          <ul>
-            <li>Desenvolvimento e manutenção de sistemas, WebApi e Library em C#, NetCore e Angular</li>
-            <li>Azure DevOps e metodologias ágeis para organização das tasks </li>
-            <li>PL-SQL em procedures e trigger em SqlServer</li>
-            <li>Elaboração de testes unitários e </li>
-          </ul>
-        </div>
-        <div class="resume-item">
-          <h4>Analista de Sistemas Senior</h4>
-          <h5>04/2014 - 08/2021</h5>
-          <p><em>Montreal Informática, Rio de Janeiro-RJ</em></p>
-          <ul>
-            <li>Desenvolvimento e manutenção de sistemas, WebApi, WebService e Library em C#, NetCore e Angular.</li>
-            <li>Kanban em single projects e Scrum master em sub-equipes de projetos destacados</li>
-            <li>Criação de procedures, triggers e packages em Oracle Database </li>
-            <li>Criação de aplicativos mobile com integração a WebServices e WebApiRest</li>
-          </ul>
+        <div class="resume-item" *ngFor="let experience of dados.experiences | orderBy : 'order' : true">
+          <h4>{{experience.cargo}}</h4>
+          <h5>{{experience.inicio}} - {{experience.fim}}</h5>
+          <p><em><b>{{experience.empresa}} </b></em></p>
+          <ng-template [ngIf]="experience.id == 1">
+            <ul *ngFor="let detail of details1">
+              <li>{{detail.detalhe}}</li>
+            </ul>
+          </ng-template>
+          <ng-template [ngIf]="experience.id == 2">
+            <ul *ngFor="let detail of details2">
+              <li>{{detail.detalhe}}</li>
+            </ul>
+          </ng-template>
         </div>
       </div>
     </div>
-
   </div>
 </section>

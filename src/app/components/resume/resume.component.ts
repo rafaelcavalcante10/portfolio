@@ -24,14 +24,8 @@ export class ResumeComponent implements OnInit {
     this.PreencheTela();
   }
   private PreencheTela() : void {
-    this.service.getDados('Resume').subscribe({
-      next: (response : any) => this.dados = response
-    });
     this.service.getDados('Resume/1').subscribe({
-      next: (response : any) => this.details1 = response
-    });
-    this.service.getDados('Resume/2').subscribe({
-      next: (response : any) => this.details2 = response,
+      next: (response : any) => this.dados = response,
       error: (error : any) => this.spinner.hide(),
       complete: () => this.spinner.hide()
     });

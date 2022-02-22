@@ -39,7 +39,7 @@ export class ContactComponent implements OnInit {
     })
   }
   private PreencheTela() : void {
-    this.service.getDados('Contact').subscribe({
+    this.service.getDados('Contact/1').subscribe({
       next: (response : any) => {
         this.dados = response;
       },

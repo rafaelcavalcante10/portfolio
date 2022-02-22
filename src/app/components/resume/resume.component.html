@@ -32,16 +32,10 @@
           <h4>{{experience.cargo}}</h4>
           <h5>{{experience.inicio}} - {{experience.fim}}</h5>
           <p><em><b>{{experience.empresa}} </b></em></p>
-          <ng-template [ngIf]="experience.id == 1">
-            <ul *ngFor="let detail of details1">
+          <!-- <ng-template [ngIf]="experience.id == 1"> -->
+            <ul *ngFor="let detail of experience.experienceDetails">
               <li>{{detail.detalhe}}</li>
             </ul>
-          </ng-template>
-          <ng-template [ngIf]="experience.id == 2">
-            <ul *ngFor="let detail of details2">
-              <li>{{detail.detalhe}}</li>
-            </ul>
-          </ng-template>
         </div>
       </div>
     </div>

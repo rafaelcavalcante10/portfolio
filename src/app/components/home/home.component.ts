@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.PreencheTela();
   }
   private PreencheTela() : void {
-    this.service.getDados("Home").subscribe({
+    this.service.getDados("Home/1").subscribe({
        next: (response : any) => {
          this.dados = response;
        },

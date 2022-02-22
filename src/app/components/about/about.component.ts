@@ -23,7 +23,7 @@ export class AboutComponent implements OnInit {
     this.PreencheTela();
   }
   private PreencheTela() : void {
-    this.service.getDados('About').subscribe({
+    this.service.getDados('About/1').subscribe({
       next: (response : any) => {
         this.dados = response;
       },

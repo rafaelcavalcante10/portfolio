@@ -84,7 +84,7 @@
             <div class="error-message"></div>
             <div class="sent-message">Your message has been sent. Thank you!</div>
           </div>
-          <div class="text-center"><button class="btn btn-success" [disabled]="!form.valid">Enviar</button></div>
+          <div class="text-center"><button class="btn btn-success" (click)="EnviarEmail()" [disabled]="!form.valid">Enviar</button></div>
         </form>
       </div>
 

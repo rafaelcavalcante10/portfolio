@@ -1,5 +1,4 @@
-import { Home } from './../../models/home';
-import { HttpClient } from '@angular/common/http';
+import { Developer } from './../../models/developer';
 import { PortfolioService } from './../../services/portfolio.service';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -10,11 +9,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: []
 })
 export class HomeComponent implements OnInit {
-  public dados : Home | any;
+  public dados : Developer | any;
 
   constructor(private service:PortfolioService,
-              private spinner : NgxSpinnerService,
-              private http : HttpClient
+              private spinner : NgxSpinnerService
         )
     { }
 
@@ -23,12 +21,9 @@ export class HomeComponent implements OnInit {
     this.PreencheTela();
   }
   private PreencheTela() : void {
-    this.service.getDados("Home/1").subscribe({
-       next: (response : any) => {
-         this.dados = response;
-       },
-       error: (error : any) => this.spinner.hide(),
-       complete: () => this.spinner.hide()
-     });
+    this.service.getDados("Home/1").subscribe(
+       (_developer : Developer) => this.dados = _developer,
+       (error : any) => console.log(error)
+     ).add(()=>this.spinner.hide());
   }
 }

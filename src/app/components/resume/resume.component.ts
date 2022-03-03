@@ -1,5 +1,4 @@
-import { ExperienceDetails } from './../../models/experience-details';
-import { Resume } from './../../models/resume';
+import { Developer } from './../../models/developer';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PortfolioService } from 'src/app/services/portfolio.service';
@@ -10,9 +9,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: []
 })
 export class ResumeComponent implements OnInit {
-  public dados : Resume | any;
-  public details1 : ExperienceDetails | any;
-  public details2 : ExperienceDetails | any;
+  public dados : Developer | any;
 
   constructor(private service:PortfolioService,
               private spinner : NgxSpinnerService
@@ -24,10 +21,9 @@ export class ResumeComponent implements OnInit {
     this.PreencheTela();
   }
   private PreencheTela() : void {
-    this.service.getDados('Resume/1').subscribe({
-      next: (response : any) => this.dados = response,
-      error: (error : any) => this.spinner.hide(),
-      complete: () => this.spinner.hide()
-    });
+    this.service.getDados('Resume/1').subscribe(
+      (_developer : Developer) => this.dados = _developer,
+       (error : any) => console.log(error)
+     ).add(()=>this.spinner.hide());
   }
 }

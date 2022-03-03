@@ -1,5 +1,5 @@
-import { Contact } from './../../models/contact';
-import { HttpClient } from '@angular/common/http';
+import { Email } from './../../models/email';
+import { Developer } from './../../models/developer';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -11,15 +11,15 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: []
 })
 export class ContactComponent implements OnInit {
-  public dados : Contact | any;
-  public form: FormGroup | any;
+  public dados : Developer;
+  private _email : Email;
+  public form: FormGroup;
   public get f() : any{
     return this.form.controls;
   }
 
   constructor(private service:PortfolioService,
               private spinner : NgxSpinnerService,
-              private http : HttpClient,
               private fb : FormBuilder
         )
     { }
@@ -39,12 +39,19 @@ export class ContactComponent implements OnInit {
     })
   }
   private PreencheTela() : void {
-    this.service.getDados('Contact/1').subscribe({
-      next: (response : any) => {
-        this.dados = response;
-      },
-      error: (error : any) => this.spinner.hide(),
-      complete: () => this.spinner.hide()
-    });
+    this.service.getDados('Contact/1').subscribe(
+      (_developer : Developer) => this.dados = _developer,
+       (error : any) => console.log(error)
+     ).add(()=>this.spinner.hide());
+  }
+  public EnviarEmail() : void {
+    this.spinner.show();
+    if (this.form.valid){
+      this._email = { ... this.form.value};
+      this.service.postEmail(this._email).subscribe(
+        (retorno : boolean) => console.log(retorno),
+        (error : any) => console.log(error)
+      ).add(() => this.spinner.hide())
+    }
   }
 }
